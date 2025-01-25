@@ -21,30 +21,30 @@ jobs:
                       cd /home/ubuntu/
                       echo "🔄 Cтягиваем код с github"
                       echo "🗑 Очищаем следы прошлых запусков, если имеются"
-                      if [ -d "streaming-communication" ]; then
-                          rm -rf streaming-communication
+                      if [ -d "streaming-gateway" ]; then
+                          rm -rf streaming-gateway
                       fi
-                      git clone git@github.com:VladyslavDobrovolskyi/streaming-communication.git
-                      cd streaming-communication
+                      git clone git@github.com:VladyslavDobrovolskyi/streaming-gateway.git
+                      cd streaming-gateway
                       git checkout dev
                       git pull
                       rm -rf .git
 
                       echo "🔄 Остановка и пересборка контейнера"
-                      echo "🛑 Проверка наличия контейнера streaming-communication"
-                      if [ $(docker ps -q -f name=streaming-communication) ]; then
-                          echo "🛑 Остановка контейнера streaming-communication"
-                          docker stop streaming-communication || true
-                          docker rm streaming-communication || true
+                      echo "🛑 Проверка наличия контейнера streaming-gateway"
+                      if [ $(docker ps -q -f name=streaming-gateway) ]; then
+                          echo "🛑 Остановка контейнера streaming-gateway"
+                          docker stop streaming-gateway || true
+                          docker rm streaming-gateway || true
                       fi
 
-                      echo "🗑 Удаление предыдущего образа streaming-communication, если он существует"
-                      if [ $(docker images -q streaming-communication) ]; then
-                          docker rmi streaming-communication || true
+                      echo "🗑 Удаление предыдущего образа streaming-gateway, если он существует"
+                      if [ $(docker images -q streaming-gateway) ]; then
+                          docker rmi streaming-gateway || true
                       fi
 
-                      echo "🛠 Пересборка контейнера streaming-communication без кэша"
-                      docker build -t streaming-communication .
+                      echo "🛠 Пересборка контейнера streaming-gateway без кэша"
+                      docker build -t streaming-gateway .
 
                       echo "🔍 Проверка наличия сети streaming-network"
                       if [ ! $(docker network ls -q -f name=streaming-network) ]; then
@@ -52,24 +52,24 @@ jobs:
                           docker network create streaming-network
                       fi
 
-                      echo "🚀 Запуск контейнера streaming-communication"
-                      docker run -d --name streaming-communication \
+                      echo "🚀 Запуск контейнера streaming-gateway"
+                      docker run -d --name streaming-gateway \
                         --network streaming-network \
                         -p 9999:9999 \
-                        streaming-communication
+                        streaming-gateway
 
-                      echo "🔍 Проверка, что контейнер streaming-communication поднялся"
-                      if [ $(docker ps -q -f name=streaming-communication) ]; then
-                          echo "✅ Контейнер streaming-communication успешно запущен"
+                      echo "🔍 Проверка, что контейнер streaming-gateway поднялся"
+                      if [ $(docker ps -q -f name=streaming-gateway) ]; then
+                          echo "✅ Контейнер streaming-gateway успешно запущен"
                       else
-                          echo "❌ Контейнер streaming-communication не запущен"
+                          echo "❌ Контейнер streaming-gateway не запущен"
                           exit 1
                       fi
                       cd /home/ubuntu/
 
                       echo "🗑 Очищаем пространство"
-                      if [ -d "streaming-communication" ]; then
-                          rm -rf streaming-communication
+                      if [ -d "streaming-gateway" ]; then
+                          rm -rf streaming-gateway
                       fi
 
                       echo "✅ Деплой завершен успешно!"
