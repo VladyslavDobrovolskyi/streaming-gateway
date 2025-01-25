@@ -56,6 +56,7 @@ jobs:
                       docker run -d --name streaming-gateway \
                         --network streaming-network \
                         -p 8888:8888 \
+                        --restart always \
                         streaming-gateway
 
                       echo "🔍 Проверка, что контейнер streaming-gateway поднялся"
