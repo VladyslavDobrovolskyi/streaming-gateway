@@ -8,7 +8,7 @@ const port = 8888
 
 app.use(express.json())
 
-app.use('/auth', authRoutes)
+// app.use('/auth', authRoutes)
 app.use('/users', userRoutes)
 app.use('/room_reservations', roomReservationsRoutes)
 
