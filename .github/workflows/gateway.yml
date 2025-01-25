@@ -55,7 +55,7 @@ jobs:
                       echo "🚀 Запуск контейнера streaming-gateway"
                       docker run -d --name streaming-gateway \
                         --network streaming-network \
-                        -p 9999:9999 \
+                        -p 8888:8888 \
                         streaming-gateway
 
                       echo "🔍 Проверка, что контейнер streaming-gateway поднялся"
