@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 const secretKey = 'SM!@#^SECR*@#&18ET_-(JK_eY' // Use a secure key in production
 
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
-	const token = req.header('Authorization')?.replace('Bearer ', '')
+	const token = req.cookies?.token
 
 	console.log('token', token)
 	if (!token) {
