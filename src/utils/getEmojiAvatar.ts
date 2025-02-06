@@ -16,7 +16,7 @@ const multicharOrd = (str: string) => {
 export default async function checkEmojiCombination() {
 	try {
 		// Read emojis from file
-		const fileContent = await fs.readFile('Emoji.txt', 'utf-8')
+		const fileContent = await fs.readFile('./Emoji.txt', 'utf-8')
 		const emojis = fileContent.trim().split('\n')
 
 		// Pick two random emojis
