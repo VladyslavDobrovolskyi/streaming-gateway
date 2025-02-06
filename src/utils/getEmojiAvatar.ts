@@ -12,7 +12,7 @@ interface TenorResponse {
 }
 
 const API_URL_FORMAT: string =
-	'https://tenor.googleapis.com/v2/featured?key=YOUR_API_KEY&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v6&q={}_{}'
+	'https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v6&q={}_{}'
 
 // Helper function to convert emoji to hex codes
 const multicharOrd = (str: string): string => {
