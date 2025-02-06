@@ -1,4 +1,5 @@
 import fs from 'fs/promises'
+import path from 'path'
 
 const API_URL_FORMAT =
 	'https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v6&q={}_{}'
@@ -16,7 +17,8 @@ const multicharOrd = (str: string) => {
 export default async function checkEmojiCombination() {
 	try {
 		// Read emojis from file
-		const fileContent = await fs.readFile('./Emoji.txt', 'utf-8')
+		const emojiPath = path.resolve(__dirname, './Emoji.txt')
+		const fileContent = await fs.readFile(emojiPath, 'utf-8')
 		const emojis = fileContent.trim().split('\n')
 
 		// Pick two random emojis
