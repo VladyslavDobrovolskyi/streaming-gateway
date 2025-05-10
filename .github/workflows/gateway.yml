@@ -46,15 +46,15 @@ jobs:
                       echo "🛠 Пересборка контейнера streaming-gateway без кэша"
                       docker build -t streaming-gateway .
 
-                      echo "🔍 Проверка наличия сети watchtogether.fun"
-                      if [ ! $(docker network ls -q -f name=watchtogether.fun) ]; then
-                          echo "🌐 Сеть watchtogether.fun не найдена, создаем сеть"
-                          docker network create watchtogether.fun
+                      echo "🔍 Проверка наличия сети watchtogether-network"
+                      if [ ! $(docker network ls -q -f name=watchtogether-network) ]; then
+                          echo "🌐 Сеть watchtogether-network не найдена, создаем сеть"
+                          docker network create watchtogether-network
                       fi
 
                       echo "🚀 Запуск контейнера streaming-gateway"
                       docker run -d --name streaming-gateway \
-                        --network watchtogether.fun \
+                        --network watchtogether-network \
                         -p 20888:20888 \
                         --restart always \
                         streaming-gateway
