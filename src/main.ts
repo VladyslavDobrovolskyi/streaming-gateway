@@ -5,7 +5,7 @@ import emojiRoute from './routes/emojiRoute'
 // import { authProxy } from './middlwares/proxyMiddleware'
 
 const app = express()
-const port = 8888
+const port = 20888
 
 app.use(express.json())
 
