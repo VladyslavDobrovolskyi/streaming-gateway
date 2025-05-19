@@ -1,9 +1,21 @@
 import express, { Request, Response } from 'express'
-import getEmojiAvatar from '../utils/getEmojiAvatar'
+import { checkEmojiCombination } from '../utils/getEmoji'
+import { checkLockCombination } from '../utils/getEmoji'
+import { checkTicketCombination } from '../utils/getEmoji'
 const router = express.Router()
 
-router.get('/emoji', async (_req: Request, res: Response) => {
-	const url = await getEmojiAvatar()
+router.get('/avatar', async (_req: Request, res: Response) => {
+	const url = await checkEmojiCombination()
+	res.json({ url })
+})
+
+router.get('/lock', async (_req: Request, res: Response) => {
+	const url = await checkLockCombination()
+	res.json({ url })
+})
+
+router.get('/ticket', async (_req: Request, res: Response) => {
+	const url = await checkTicketCombination()
 	res.json({ url })
 })
 
