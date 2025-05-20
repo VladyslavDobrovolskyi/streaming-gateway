@@ -93,6 +93,26 @@ export async function checkLockCombination(): Promise<string | null> {
 	}
 }
 
+export async function checkSearchCombination(): Promise<string | null> {
+	try {
+		const emojiPath = path.resolve(__dirname, './Emoji.txt')
+		const fileContent = await fs.readFile(emojiPath, 'utf-8')
+		const emojis = fileContent.trim().split('\n')
+
+		let result: string | null = null
+		while (result === null) {
+			const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)]
+			result = await getEmojiCombinationWithFixed(randomEmoji, '🔍')
+		}
+
+		console.log(`🔍 Found lock combination: ${result}`)
+		return result
+	} catch (error) {
+		console.error('Error occurred:', error)
+		return null
+	}
+}
+
 // Комбинация с билетом (🎫)
 export async function checkTicketCombination(): Promise<string | null> {
 	try {
