@@ -55,7 +55,7 @@ async function getEmojiCombination(emojis: string[]): Promise<string | null> {
 // Основная функция — случайная комбинация
 export async function checkEmojiCombination(): Promise<string | null> {
 	try {
-		const emojiPath = path.resolve(__dirname, './Emoji.txt')
+		const emojiPath = path.resolve(__dirname, './EmojiAvatar.txt')
 		const fileContent = await fs.readFile(emojiPath, 'utf-8')
 		const emojis = fileContent.trim().split('\n')
 
@@ -75,7 +75,7 @@ export async function checkEmojiCombination(): Promise<string | null> {
 // Комбинация с замком (🔒)
 export async function checkLockCombination(): Promise<string | null> {
 	try {
-		const emojiPath = path.resolve(__dirname, './Emoji.txt')
+		const emojiPath = path.resolve(__dirname, './EmojiLock.txt')
 		const fileContent = await fs.readFile(emojiPath, 'utf-8')
 		const emojis = fileContent.trim().split('\n')
 
@@ -95,7 +95,7 @@ export async function checkLockCombination(): Promise<string | null> {
 
 export async function checkSearchCombination(): Promise<string | null> {
 	try {
-		const emojiPath = path.resolve(__dirname, './Emoji.txt')
+		const emojiPath = path.resolve(__dirname, './EmojiSearch.txt')
 		const fileContent = await fs.readFile(emojiPath, 'utf-8')
 		const emojis = fileContent.trim().split('\n')
 
@@ -116,7 +116,7 @@ export async function checkSearchCombination(): Promise<string | null> {
 // Комбинация с билетом (🎫)
 export async function checkTicketCombination(): Promise<string | null> {
 	try {
-		const emojiPath = path.resolve(__dirname, './Emoji.txt')
+		const emojiPath = path.resolve(__dirname, './EmojiTicket.txt')
 		const fileContent = await fs.readFile(emojiPath, 'utf-8')
 		const emojis = fileContent.trim().split('\n')
 
